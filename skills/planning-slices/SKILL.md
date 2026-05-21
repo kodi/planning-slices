@@ -1,6 +1,6 @@
 ---
 name: planning-slices
-description: Create or update working docs/plans handoff documents for larger engineering changes, including migrations and multi-module features. Use to split work into ordered implementation slices, track progress, record cross-session findings, define per-slice verification, and keep follow-up work recoverable and reviewable.
+description: Create or update working docs/plans handoff documents for larger engineering changes, including migrations and multi-module features. Use to split work into ordered implementation slices, resume from existing plans, preserve prior notes, append dated findings, track only verified progress, define per-slice verification, and keep follow-up work recoverable and reviewable.
 ---
 
 # Planning Slices
@@ -75,18 +75,23 @@ Avoid slices that:
 - create a long-lived dual implementation without an explicit cleanup slice
 - leave the next agent guessing what was learned
 
-## Tracking Progress
+## Updating Or Resuming A Plan
 
-Treat the plan as the handoff record between sessions. When a slice finishes, update:
+Treat the plan as the durable handoff record between sessions. Before editing an existing plan, read it end to end and identify the active slice, prior `Working Notes`, existing verification records, `Open Questions`, and `Next Slice`.
 
-- the slice status
-- `Completed in this slice` for compact plans
-- `Working Notes` or `<slice> findings` for larger plans
-- `Implication for later slices` when new information changes future work
-- `Verification` with the exact command or manual check that passed
-- `Next Slice` so the next session starts in the right place
+When updating an existing plan:
 
-When a real follow-up emerges outside the original core path, add a numbered follow-up slice such as `Slice 5.1` instead of burying it in notes.
+- preserve prior decisions, notes, findings, and verification records unless the user explicitly asks for cleanup
+- append dated findings under `Working Notes` or `<slice> findings` instead of replacing old context
+- mark a slice `[x]` only when the completed work is verified by an exact command, manual check, merged PR, or clearly recorded prior evidence
+- use `[-]` for partial work and leave unverified or untouched work as `[ ]`
+- record `Completed in this slice` for compact plans when it clarifies what actually changed
+- update `Implication for later slices` when new information changes the remaining order, scope, or risk
+- update `Verification` with the exact command or manual check that passed; if verification was not run, say that directly
+- add a numbered follow-up slice such as `Slice 5.1` when real follow-up work emerges outside the original path
+- always leave `Next Slice` actionable enough for a future session to start without chat history
+
+A good `Next Slice` names the next concrete task, the first files or systems to inspect, the expected verification, and any blocker or open question that must be resolved first.
 
 ## Cross-Slice Rules
 
@@ -117,5 +122,8 @@ Before considering a new or updated plan ready, confirm it:
 - splits the work into ordered slices
 - gives each slice a dependency boundary and verification step
 - adds cleanup or docs slices when temporary state is introduced
+- preserves prior notes, decisions, findings, and verification records when updating an existing plan
+- marks only verified work as done
 - records findings and actual verification as work proceeds
+- leaves `Next Slice` concrete, current, and actionable
 - updates relevant wiki or docs pages after implementation changes project behavior
