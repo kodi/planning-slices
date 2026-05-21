@@ -1,6 +1,6 @@
 ---
 name: planning-slices
-description: Create or update working plan documents that split larger engineering changes into ordered implementation slices. Use when an AI coding agent needs to draft a plan under docs/plans, structure a migration or multi-module feature, track slice progress, record findings between sessions, define verification for each slice, or keep follow-up work recoverable and reviewable.
+description: Create or update working docs/plans handoff documents for larger engineering changes, including migrations and multi-module features. Use to split work into ordered implementation slices, track progress, record cross-session findings, define per-slice verification, and keep follow-up work recoverable and reviewable.
 ---
 
 # Planning Slices
