@@ -1,0 +1,4 @@
+interface:
+  display_name: "Planning Slices"
+  short_description: "Create and maintain slice-based planning docs."
+  default_prompt: "Use $planning-slices to draft or update a plan with ordered implementation slices and progress tracking."
